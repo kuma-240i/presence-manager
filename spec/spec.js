@@ -29,6 +29,25 @@ describe("The express server", () => {
     });
   });
 
+  describe("GET /v1/presences/:id", () => {
+    describe("return presence", () => {
+      it("should return status 200", async () => {
+        const res1 = await request.get("/v1/presences");
+        const targetId = JSON.parse(res1.text).shift().id;
+        const res2 = await request.get("/v1/presences/"+targetId);
+        res2.should.have.status(200);
+      });
+      it("should return expected data", async () => {
+        const res1 = await request.get("/v1/presences");
+        const targetId = JSON.parse(res1.text).shift().id;
+        const res2 = await request.get("/v1/presences/"+targetId);
+        res2.should.be.json;
+        JSON.parse(res2.text).length.should.deep.equal(1);
+        JSON.parse(res2.text)[0].name.should.deep.equal('土方 歳三');
+      });
+    });
+  });
+
   describe("POST /v1/presences", () => {
     describe("add presence", () => {
       it("should return status 201", async () => {
