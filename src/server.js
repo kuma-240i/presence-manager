@@ -19,7 +19,14 @@ const setupExpressServer = () => {
       res.status(201).end();
     });    
   });
-  
+
+  app.delete('/v1/presences/:id', (req, res) => {
+    const { id } = req.params;
+    knex('presence').where('id', id).del().then(() =>{
+      res.status(204).end();
+    });
+  });
+
   return app;
 };
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "test": "mocha spec",
+    "test": "npm run seedRun && mocha spec",
     "makeMigrate": "knex migrate:make --knexfile models/knexfile.js",
     "migrate": "knex migrate:latest --knexfile models/knexfile.js",
     "seedMake": "knex seed:make --knexfile models/knexfile.js insert_presence_table",
