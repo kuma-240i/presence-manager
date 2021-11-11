@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-
 <html>
+  <head>
+    <title>出社・テレワーク状況</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/api.js"></script>
+  </head>
+  <body>
+    <input id="mybutton" type="button" value="更新" onclick="exec();"/>
+    
+    <hr/>
+    ＜出社中＞
+    <div id="office"></div>
+    <br>
 
-<head>
-</head>
+    <hr/>
+    ＜テレワーク中＞
+    <div id="telework"></div>
+    <br>
 
-<body ng-app="myApp">
-hello!!!!! html!!!!
-</body>
-
+    <hr/>
+    ＜業務外＞
+    <div id="nonbusiness"></div>
+    <br>
+    
+  </body>
 </html>
