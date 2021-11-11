@@ -28,5 +28,24 @@ describe("The express server", () => {
       });
     });
 
+    describe("POST /v1/presences", () => {
+      describe("return presence", () => {
+        it("should return status 201", async () => {
+          const newMenber = {
+            name: '芹澤 鴨',
+            presence: '壬生郷士八木邸',
+          };
+          const resPost = await request.post("/v1/presences").send(newMenber);
+          resPost.should.have.status(201);
+        });
+        it("should return expected data", async () => {
+          const res = await request.get("/v1/presences");
+          res.should.be.json;
+          JSON.parse(res.text).length.should.deep.equal(6);
+          JSON.parse(res.text).slice(-1)[0].name.should.deep.equal('芹澤 鴨');
+        });
+      });
+    });
+    
   });
 });
