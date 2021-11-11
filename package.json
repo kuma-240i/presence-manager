@@ -8,6 +8,8 @@
     "test": "mocha spec",
     "makeMigrate": "knex migrate:make --knexfile models/knexfile.js",
     "migrate": "knex migrate:latest --knexfile models/knexfile.js",
+    "seedMake": "knex seed:make --knexfile models/knexfile.js insert_presence_table",
+    "seedRun": "knex seed:run --knexfile models/knexfile.js",
     "rollback": "knex migrate:rollback --knexfile models/knexfile.js "
   },
   "repository": {
