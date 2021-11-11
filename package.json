@@ -4,7 +4,11 @@
   "description": "出社・テレワーク状況を管理します",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test && npm run lint"
+    "start": "node ./src/index.js",
+    "test": "mocha spec",
+    "makeMigrate": "knex migrate:make --knexfile models/knexfile.js",
+    "migrate": "knex migrate:latest --knexfile models/knexfile.js",
+    "rollback": "knex migrate:rollback --knexfile models/knexfile.js "
   },
   "repository": {
     "type": "git",
@@ -17,8 +21,10 @@
   },
   "homepage": "https://github.com/kuma-240i/presence-manager#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "knex": "^0.95.14"
+    "knex": "^0.95.14",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "chai": "^4.3.4",
