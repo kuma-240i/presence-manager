@@ -14,20 +14,19 @@ describe("The express server", () => {
     request = chai.request(app);
   });
 
-  describe("express basics", () => {
-    describe("GET /v1/hello - commentttttt", () => {
+  describe("GET /v1/presences", () => {
+    describe("return presence", () => {
       it("should return status 200", async () => {
-        const res = await request.get("/v1/hello");
+        const res = await request.get("/v1/presences");
         res.should.have.status(200);
+      });
+      it("should return expected data", async () => {
+        const res = await request.get("/v1/presences");
+        res.should.be.json;
+        JSON.parse(res.text).length.should.deep.equal(5);
+        JSON.parse(res.text).shift().name.should.deep.equal('土方 歳三');
       });
     });
 
-    // describe("GET /hello - returning text", () => {
-    //   it("should return the text/html 'world'", async () => {
-    //     const res = await request.get("/hello");
-    //     res.should.be.html;
-    //     res.text.should.equal("world");
-    //   });
-    // });
   });
 });
