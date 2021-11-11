@@ -11,9 +11,4 @@ module.exports = {
       password: process.env.DB_PASSWORD,
     },
   },
-
-  // port for server to run on
-  express: {
-    port: process.env.PORT || 3000,
-  },
 };
