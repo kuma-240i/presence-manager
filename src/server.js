@@ -27,6 +27,13 @@ const setupExpressServer = () => {
     });
   });
 
+  app.patch('/v1/presences/:id', async (req, res) => {
+    const { id } = req.params;
+    knex('presence').where('id', id).update(req.body).then(() =>{
+      res.status(204).end();
+    });
+  });
+
   return app;
 };
 
